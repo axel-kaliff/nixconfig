@@ -12,6 +12,9 @@ let
       https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
 in
 {
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
@@ -43,6 +46,8 @@ in
 		tmux
 		eza
 		git
+		sublime-merge
+		bat
 
 		# desktop environment
 		gnome.gnome-tweaks
@@ -63,32 +68,7 @@ in
 		spot
 		spotify
 		popsicle
-
-		# cosmic
-		unstable.cosmic-edit
-		unstable.cosmic-settings
-		unstable.cosmic-term
-		unstable.cosmic-bg
-		unstable.cosmic-osd
-		unstable.cosmic-comp
-		unstable.cosmic-store
-		unstable.cosmic-randr
-		unstable.cosmic-panel
-		unstable.cosmic-icons
-		unstable.cosmic-files
-		unstable.cosmic-session
-		unstable.cosmic-greeter
-		unstable.cosmic-applets
-		unstable.cosmic-launcher
-		unstable.cosmic-protocols
-		unstable.cosmic-screenshot
-		unstable.cosmic-applibrary
-		unstable.cosmic-notifications
-		unstable.cosmic-settings-daemon
-		unstable.cosmic-workspaces-epoch
-		unstable.xdg-desktop-portal-cosmic
-		unstable.cosmic-design-demo
-
+		element-desktop
 	];
 
 
