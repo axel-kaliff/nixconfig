@@ -2,6 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
+# nix path: /home/akaliff/.nix-defexpr/channels:nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels
+
 { config, pkgs, ... }:
 
 let
@@ -84,6 +86,8 @@ in
 		unstable.cosmic-notifications
 		unstable.cosmic-settings-daemon
 		unstable.cosmic-workspaces-epoch
+		unstable.xdg-desktop-portal-cosmic
+		unstable.cosmic-design-demo
 
 	];
 
@@ -128,6 +132,9 @@ in
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  #services.xserver.desktopManager.cosmic.enable = true;
+  #services.xserver.displayManager.cosmic-greeter.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
