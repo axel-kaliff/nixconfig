@@ -4,7 +4,7 @@
 
 # nix path: /home/akaliff/.nix-defexpr/channels:nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   unstableTarball =
@@ -69,6 +69,7 @@ in
 		spotify
 		popsicle
 		element-desktop
+		evince
 
 		# cosmic
 		/*
@@ -148,9 +149,9 @@ in
   services.displayManager.cosmic-greeter.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -198,7 +199,7 @@ in
   programs.zsh = {
 	  enable = true;
 	  enableCompletion = true;
-	  enableAutosuggestions = true;
+	  autosuggestions.enable = true;
 	  syntaxHighlighting.enable = true;
 
 	  shellAliases = {
@@ -206,9 +207,9 @@ in
 	    update = "sudo nixos-rebuild switch";
 	  };
 
-	  oh-my-zsh = {
+	  ohMyZsh = {
 	    enable = true;
-	    plugins = [ "git" "thefuck"];
+	    plugins = [ "git" "thefuck" "sudo"];
 	    theme = "robbyrussell";
 	  };
   };

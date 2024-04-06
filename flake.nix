@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    xremap-flake.url = "github:xremap/nix-flake";
+
   };
 
   outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
@@ -21,11 +23,20 @@
       specialArgs = {inherit inputs;};
 
 	modules = [
+	inputs.xremap-flake.nixosModules.default
           {
             nix.settings = {
               substituters = [ "https://cosmic.cachix.org/" ];
               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
+
+	services.xremap.config.modmap = [
+            {
+              name = "Global";
+              remap = { "CapsLock" = "LeftCtrl"; }; # globally remap CapsLock to control 
+            }
+          ];
+
           }
           nixos-cosmic.nixosModules.default
           ./configuration.nix
