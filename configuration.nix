@@ -70,34 +70,6 @@ in
 		popsicle
 		element-desktop
 		evince
-
-		# cosmic
-		/*
-		unstable.cosmic-edit
-		unstable.cosmic-settings
-		unstable.cosmic-term
-		unstable.cosmic-bg
-		unstable.cosmic-osd
-		unstable.cosmic-comp
-		unstable.cosmic-store
-		unstable.cosmic-randr
-		unstable.cosmic-panel
-		unstable.cosmic-icons
-		unstable.cosmic-files
-		unstable.cosmic-session
-		unstable.cosmic-greeter
-		unstable.cosmic-applets
-		unstable.cosmic-launcher
-		unstable.cosmic-protocols
-		unstable.cosmic-screenshot
-		unstable.cosmic-applibrary
-		unstable.cosmic-notifications
-		unstable.cosmic-settings-daemon
-		unstable.cosmic-workspaces-epoch
-		unstable.xdg-desktop-portal-cosmic
-		unstable.cosmic-design-demo
-		*/
-
 	];
 
 
@@ -150,7 +122,7 @@ in
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us";
+    layout = "us,swe";
     variant = "";
   };
 
