@@ -30,6 +30,7 @@ in
 
 	  environment.systemPackages = with pkgs;[
 		# engineering
+		lazygit
 		neovim 
 		wget
 		conda
@@ -57,6 +58,7 @@ in
 		gnomeExtensions.tray-icons-reloaded
 
 		# apps
+		slack
 		obsidian
 		vlc
 		qbittorrent
