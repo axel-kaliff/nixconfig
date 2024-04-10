@@ -16,13 +16,21 @@
 
     xremap-flake.url = "github:xremap/nix-flake";
 
+
+  nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
+
+  };
+
+  outputs = { self, nixpkgs, nixos-cosmic, nixvim, ... }@inputs: {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
 
 	modules = [
+  
 	inputs.xremap-flake.nixosModules.default
           {
             nix.settings = {
@@ -35,11 +43,11 @@
               name = "Global";
               remap = { 
 
-		"Alt_L" = "Win_L"; 
-		"Win_L" = "Alt_L"; 
-	      	"CapsLock" = "LeftCtrl"; 
+                "Alt_L" = "Win_L"; 
+                "Win_L" = "Alt_L"; 
+                "CapsLock" = "LeftCtrl"; 
 
-	      }; 
+	            }; 
             }
           ];
 
@@ -56,6 +64,10 @@
           nixos-cosmic.nixosModules.default
           ./configuration.nix
 	  inputs.home-manager.nixosModules.default
+
+           inputs.nixvim.nixosModules.nixvim
+           #./nixvim/nixvim.nix
+
       ];
 
     };
