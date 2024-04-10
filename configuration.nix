@@ -70,6 +70,7 @@ in
 		popsicle
 		element-desktop
 		evince
+		gnome.nautilus
 	];
 
 
