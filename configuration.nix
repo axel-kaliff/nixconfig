@@ -18,6 +18,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.default
     ];
 
   nixpkgs.config = {
@@ -61,7 +62,6 @@ in
 		# apps
 		slack
 		obsidian
-		vlc
 		qbittorrent
 		zoom-us
 		discord
@@ -160,6 +160,13 @@ in
       thunderbird
     ];
   };
+
+  home-manager = {
+  	extraSpecialArgs = { inherit inputs; };
+	users = {
+		"akaliff" = import ./home.nix;
+	};
+};
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

@@ -4,10 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # home-manager = {
-    #   url = "github:nix-community/home-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+     home-manager = {
+       url = "github:nix-community/home-manager";
+       inputs.nixpkgs.follows = "nixpkgs";
+     };
 
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
@@ -43,7 +43,6 @@
             }
           ];
 
-
 	   services.xremap.config.keymap = [
               {
                 name = "navigation";
@@ -53,11 +52,10 @@
 		};
               }
             ];
-
-
           }
           nixos-cosmic.nixosModules.default
           ./configuration.nix
+	  inputs.home-manager.nixosModules.default
       ];
 
     };
