@@ -41,7 +41,7 @@ in
 		python3
 		z-lua
 		rustup
-		cosmic-edit
+		# cosmic-edit
 		oh-my-zsh
 		thefuck
 		tmux
@@ -49,6 +49,7 @@ in
 		git
 		sublime-merge
 		bat
+		broot
 
 		# desktop environment
 		gnome.gnome-tweaks
@@ -116,9 +117,6 @@ in
   # Enable the GNOME Desktop Environment.
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
-
-  #services.xserver.desktopManager.cosmic.enable = true;
-  #services.xserver.displayManager.cosmic-greeter.enable = true;
 
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
