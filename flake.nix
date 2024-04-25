@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-     home-manager = {
+    home-manager = {
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
      };
@@ -16,60 +16,57 @@
 
     xremap-flake.url = "github:xremap/nix-flake";
 
-
-  nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
   };
 
-
-  };
-
-  outputs = { self, nixpkgs, nixos-cosmic, nixvim, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
 
-	modules = [
-  
-	inputs.xremap-flake.nixosModules.default
-          {
-            nix.settings = {
-              substituters = [ "https://cosmic.cachix.org/" ];
-              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-            };
-
-	services.xremap.config.modmap = [
+    modules = [
+      
+    inputs.xremap-flake.nixosModules.default
             {
-              name = "Global";
-              remap = { 
-
-                "Alt_L" = "Win_L"; 
-                "Win_L" = "Alt_L"; 
-                "CapsLock" = "LeftCtrl"; 
-
-	            }; 
-            }
-          ];
-
-	   services.xremap.config.keymap = [
-              {
-                name = "navigation";
+                nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+                };
+    
+   services.xremap.config.modmap = [
+                {
+                name = "Global";
                 remap = { 
-		"C-k" = "PAGEUP"; 
-		"C-j" = "PAGEDOWN"; 
-		};
-              }
+    
+                    "Alt_L" = "Win_L"; 
+                    "Win_L" = "Alt_L"; 
+                    "CapsLock" = "LeftCtrl"; 
+    
+               }; 
+                }
             ];
-          }
-          nixos-cosmic.nixosModules.default
-          ./configuration.nix
-	  inputs.home-manager.nixosModules.default
+    
+       services.xremap.config.keymap = [
+                {
+                    name = "navigation";
+                    remap = { 
+        "C-k" = "PAGEUP"; 
+        "C-j" = "PAGEDOWN"; 
+        };
+                }
+                ];
+            }
+            nixos-cosmic.nixosModules.default
+            ./configuration.nix
+            inputs.home-manager.nixosModules.default
+    
+            #inputs.nixvim.nixosModules.nixvim
+            #./nixvim/nixvim.nix
+    
+        ];
+        };
 
-           inputs.nixvim.nixosModules.nixvim
-           #./nixvim/nixvim.nix
 
-      ];
 
-    };
+
+
   };
 }
