@@ -1,10 +1,19 @@
-{ config, pkgs, ... }:
+{ self, inputs, config, pkgs, ... }:
+
+let
+  nixvim = import (builtins.fetchGit {
+    url = "https://github.com/nix-community/nixvim";
+    # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+    # ref = "nixos-23.05";
+  });
+in
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "akaliff";
   home.homeDirectory = "/home/akaliff";
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -15,13 +24,55 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  imports = [
+
+  ];
+
+  nixpkgs.config.allowUnfree = true;
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-    pkgs.vlc
+  home.packages = with pkgs; [
+	# # Adds the 'hello' command to your environment. It prints a friendly
+	# # "Hello, world!" when run.
+	# pkgs.hello
+	vlc
+	gnome.file-roller
+	loupe
+
+	# engineering
+	lazygit
+	neovim 
+	wget
+	# conda
+	vscode
+	# mujoco
+	alacritty
+	zsh
+	python3
+	z-lua
+	rustup
+	# cosmic-edit
+	oh-my-zsh
+	thefuck
+	tmux
+	eza
+	git
+	sublime-merge
+	bat
+	broot
+
+	# apps
+	slack
+	obsidian
+	qbittorrent
+	zoom-us
+	discord
+	libreoffice-qt
+	pinta
+	spotify
+	popsicle
+	element-desktop
+	evince
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -68,7 +119,7 @@
   #  /etc/profiles/per-user/akaliff/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.

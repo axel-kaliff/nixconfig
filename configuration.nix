@@ -19,6 +19,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+
     ];
 
   nixpkgs.config = {
@@ -30,27 +31,6 @@ in
   };
 
 	  environment.systemPackages = with pkgs;[
-		# engineering
-		lazygit
-		neovim 
-		wget
-		conda
-		vscode
-		mujoco
-		alacritty
-		zsh
-		python3
-		z-lua
-		rustup
-		# cosmic-edit
-		oh-my-zsh
-		thefuck
-		tmux
-		eza
-		git
-		sublime-merge
-		bat
-		broot
 
 		# desktop environment
 		gnome.gnome-tweaks
@@ -58,22 +38,9 @@ in
 		gnomeExtensions.pop-shell
 		gnomeExtensions.caffeine
 		gnomeExtensions.tray-icons-reloaded
-
-		# apps
-		slack
-		obsidian
-		qbittorrent
-		zoom-us
-		discord
-		discordo
-		libreoffice-qt
-		pinta
-		spot
-		spotify
-		popsicle
-		element-desktop
-		evince
 		gnome.nautilus
+
+		
 	];
 
 
@@ -123,7 +90,7 @@ in
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us,swe";
+    layout = "us,se";
     variant = "";
   };
 
