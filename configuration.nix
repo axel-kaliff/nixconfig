@@ -40,6 +40,9 @@ in
 		gnomeExtensions.tray-icons-reloaded
 		gnome.nautilus
 
+    # linux specific
+    whatsapp-for-linux
+
 		
 	];
 
