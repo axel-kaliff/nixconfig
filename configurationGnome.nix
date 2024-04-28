@@ -227,12 +227,7 @@ in
   system.stateVersion = "23.11"; # Did you read the comment?
 
 
- programs.neovim = {
-  enable = true;
-  defaultEditor = true;
-  viAlias = true;
-  vimAlias = true;
-};
+ 
  
  # programs.neovim.extraConfig = lib.fileContents ../path/to/your/init.vim;
 

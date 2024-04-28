@@ -26,6 +26,10 @@ in
 
   imports = [
 
+    inputs.nixvim.homeManagerModules.nixvim
+    ./neovim.nix
+    #./nixvim/flake.nix
+
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -41,7 +45,7 @@ in
 
 	# engineering
 	lazygit
-	neovim 
+	#neovim 
 	wget
 	# conda
 	vscode
