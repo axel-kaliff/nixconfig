@@ -28,26 +28,20 @@ in
 
     inputs.nixvim.homeManagerModules.nixvim
     ./neovim.nix
-    #./nixvim/flake.nix
 
   ];
 
   nixpkgs.config.allowUnfree = true;
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+
   home.packages = with pkgs; [
-	# # Adds the 'hello' command to your environment. It prints a friendly
-	# # "Hello, world!" when run.
-	# pkgs.hello
 	vlc
 	gnome.file-roller
 	loupe
 
-	# engineering
+	##### engineering
 	lazygit
 	#neovim 
 	wget
-	# conda
 	vscode
 	# mujoco
 	alacritty
@@ -55,7 +49,6 @@ in
 	python3
 	z-lua
 	rustup
-	# cosmic-edit
 	oh-my-zsh
 	thefuck
 	tmux
@@ -65,7 +58,7 @@ in
 	bat
 	broot
 
-	# apps
+	##### apps
 	slack
 	obsidian
 	qbittorrent
@@ -77,6 +70,8 @@ in
 	popsicle
 	element-desktop
 	evince
+  firefox
+  thunderbird
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -98,7 +93,7 @@ in
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    # ".zshrc".source = dotfiles/zshrc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -125,6 +120,8 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

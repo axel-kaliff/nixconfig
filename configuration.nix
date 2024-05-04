@@ -19,6 +19,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      ./zsh.nix
 
     ];
 
@@ -42,8 +43,6 @@ in
 
     # linux specific
     whatsapp-for-linux
-
-		
 	];
 
   system.autoUpgrade = {
@@ -83,8 +82,6 @@ in
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "sv_SE.UTF-8";
@@ -98,9 +95,6 @@ in
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  #services.xserver.enable = true;
-
   # Enable the GNOME Desktop Environment.
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
@@ -108,10 +102,12 @@ in
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
 
+  services.xserver.enable = true;
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us,se";
+    layout = "us,ru,se";
     variant = "";
+    options = "grp:alt_bksp_toggle";
   };
 
   # Enable CUPS to print documents.
@@ -126,26 +122,18 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    jack.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.akaliff = {
     isNormalUser = true;
     description = "Axel Kaliff";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      thunderbird
-    ];
+    #packages = with pkgs; [
+    #];
   };
 
   home-manager = {
@@ -157,29 +145,6 @@ in
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  
-
-
-  programs.zsh = {
-	  enable = true;
-	  enableCompletion = true;
-	  autosuggestions.enable = true;
-	  syntaxHighlighting.enable = true;
-
-	  shellAliases = {
-	    ll = "ls -l";
-	    update = "sudo nixos-rebuild switch";
-	  };
-
-	  ohMyZsh = {
-	    enable = true;
-	    plugins = [ "git" "thefuck" "sudo"];
-	    theme = "robbyrussell";
-	  };
-  };
 
   users.defaultUserShell = pkgs.zsh;
 
@@ -215,10 +180,6 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
-
- 
- 
- # programs.neovim.extraConfig = lib.fileContents ../path/to/your/init.vim;
 
 
 }
