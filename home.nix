@@ -28,6 +28,7 @@ in
 
     inputs.nixvim.homeManagerModules.nixvim
     ./neovim.nix
+    ./fish/fish.nix
 
   ];
 
@@ -39,6 +40,7 @@ in
 	loupe
 
 	##### engineering
+  fish
 	lazygit
 	#neovim 
 	wget
@@ -49,7 +51,7 @@ in
 	python3
 	z-lua
 	rustup
-	oh-my-zsh
+	#oh-my-zsh
 	thefuck
 	tmux
 	eza
@@ -57,6 +59,7 @@ in
 	sublime-merge
 	bat
 	broot
+  du-dust
 
 	##### apps
 	slack

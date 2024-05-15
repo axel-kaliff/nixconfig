@@ -146,7 +146,7 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  users.defaultUserShell = pkgs.zsh;
+#  users.defaultUserShell = pkgs.zsh;
 
   nixpkgs.config.permittedInsecurePackages = [
                 "electron-25.9.0"
