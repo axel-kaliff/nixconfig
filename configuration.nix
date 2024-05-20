@@ -31,6 +31,10 @@ in
     };
   };
 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = ["FiraCode" "DroidSansMono" "Hack" "SourceCodePro" ]; })
+  ];
+
 	  environment.systemPackages = with pkgs;[
 
 		# desktop environment
@@ -139,15 +143,16 @@ in
 
   home-manager = {
   	extraSpecialArgs = { inherit inputs; };
-	users = {
-		"akaliff" = import ./home.nix;
-	};
+    users = {
+      "akaliff" = import ./home.nix;
+    };
+    backupFileExtension = "backup";
 };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-#  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.fish;
 
   nixpkgs.config.permittedInsecurePackages = [
                 "electron-25.9.0"

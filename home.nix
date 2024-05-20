@@ -1,4 +1,4 @@
-{ self, inputs, config, pkgs, ... }:
+{ self,lib, inputs, config, pkgs, ... }:
 
 let
   nixvim = import (builtins.fetchGit {
@@ -28,7 +28,6 @@ in
 
     inputs.nixvim.homeManagerModules.nixvim
     ./neovim.nix
-    ./fish/fish.nix
 
   ];
 
@@ -52,7 +51,6 @@ in
 	z-lua
 	rustup
 	#oh-my-zsh
-	thefuck
 	tmux
 	eza
 	git
@@ -61,18 +59,21 @@ in
 	broot
   du-dust
 
+  #ion
+  #nushell
+
 	##### apps
-	slack
+  freetube
+	#slack
 	obsidian
 	qbittorrent
 	zoom-us
 	discord
-	libreoffice-qt
+	libreoffice
 	pinta
 	spotify
 	popsicle
-	element-desktop
-	evince
+	#evince
   firefox
   thunderbird
   libsForQt5.okular
@@ -128,5 +129,8 @@ in
   
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-}
+  programs = {
+    home-manager.enable = true;
+    fish = import ./fish/fish.nix { inherit lib; inherit pkgs; };
+    };
+  }
