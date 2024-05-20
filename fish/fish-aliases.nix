@@ -10,15 +10,15 @@
 	nvert  = "nvim -O"; # split with vertical divider
 
 	# lsd
-	l = "lsd";
-	la = "lsd -A";
-	ll = "lsd -Al";
+	l = "eza";
+	la = "eza -A";
+	ll = "eza -Al";
 
 	mkdir = "mkdir -p";
 	cl = "clear ; git status || clear";
 
 	#"-" = "cd -";
-	cdd = "cd ~/.config/home-manager";
+	cdd = "cd ~/nixconf";
 	".." = "cd ..";
 	"..." = "cd ../..";
 	"..2" = "cd ../..";
@@ -33,39 +33,10 @@
 	duai = "dua i";
 
 	# git
-	g = "git";
-	ga = "git add";
-	"ga." = "git add .";
-	gap = "git add --patch";
-	"gap." = "git add --patch .";
-	gb = "git branch";
-	gc = "git commit";
-	gch = "git checkout";
-	gchb = "git checkout -b";
-	gcl = "git clone";
-	gcm = "git commit -m";
-	gd = "git diff";
-	"gd." = "git diff .";
-	gds = "git diff --staged";
-	"gds." = "git diff --staged .";
-	gf = "git fetch";
-	gfo = "git fetch origin";
+	g = "lazygit";
+	
 	gl = "git log --oneline --decorate --graph";
-	gm = "git merge";
-	gmt = "git mergetool";
-	gpull = "git pull";
-	gpush = "git push";
-	gpush-force = "git push --force-with-lease";
-	grs = "git restore --staged";
-	"grs." = "git restore --staged .";
-	grsp = "git restore --staged --patch";
-	"grsp." = "git restore --staged --patch .";
-	gs = "git status -u --find-renames=1";
-	gss = "git status";
-	gstash = "git stash push --keep-index";
-	gstashp = "git stash pop";
 
-	whatismyip = "curl -s https://icanhazip.com";
 	whatismylocalip = "ip addr | grep -oE '192\.168\.[0-9]{1,3}\.[0-9]{1,3}' | head -n 1";
 
 	dv = "yt-dlp";

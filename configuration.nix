@@ -61,6 +61,7 @@ in
   programs.nix-ld.libraries = with pkgs; [
     
   ];
+  programs.fish.enable = true;
 
 
 
