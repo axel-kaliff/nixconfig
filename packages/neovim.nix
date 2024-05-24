@@ -1,3 +1,4 @@
+{pkgs,...}:
 {
   programs.nixvim = {
     enable = true;
@@ -12,7 +13,7 @@
       smartindent = true;
       tabstop = 2;
       number = true;
-      clipboard = "unnamedplus";
+      #clipboard = "wl-clipboard";
     };
 
     # Keymaps
@@ -20,7 +21,13 @@
       mapleader = " ";
     };
 
+      extraPlugins = with pkgs.vimPlugins; [
+      vim-nix
+      neo-tree-nvim
+      ];
+
     plugins = {
+
 
       # UI
       lualine.enable = true;
