@@ -1,8 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-# nix path: /home/akaliff/.nix-defexpr/channels:nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels
 
 { config, pkgs, inputs, ... }:
 
@@ -110,7 +105,7 @@ in
   services.xserver.enable = true;
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us,ru,se";
+    layout = "us";
     variant = "";
     options = "grp:alt_bksp_toggle";
   };
@@ -159,15 +154,6 @@ in
 		"qtwebkit-5.212.0-alpha4"
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
