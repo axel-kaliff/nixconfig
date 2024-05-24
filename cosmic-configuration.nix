@@ -12,6 +12,7 @@
     ./modules/audio.nix
     ./zsh.nix
     inputs.home-manager.nixosModules.default
+    inputs.nixos-cosmic.nixosModules.default
   ];
 }
 

@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./modules/common-desktop.nix
+    ./common-desktop.nix
   ];
 
   services.desktopManager.cosmic.enable = true;

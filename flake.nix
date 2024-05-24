@@ -27,8 +27,7 @@
   };
 
   outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
-
-nixosConfigurations.cosmic = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.cosmic = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
 
       modules = [
@@ -40,7 +39,6 @@ nixosConfigurations.cosmic = nixpkgs.lib.nixosSystem {
           };
         }
         ./cosmic-configuration.nix
-        inputs.home-manager.nixosModules.default
         ./xremap.nix
       ];
     };
@@ -57,14 +55,9 @@ nixosConfigurations.cosmic = nixpkgs.lib.nixosSystem {
           };
         }
         ./gnome-configuration.nix
-        inputs.home-manager.nixosModules.default
         ./xremap.nix
       ];
     };
-
-
-
-
   };
 }
 
