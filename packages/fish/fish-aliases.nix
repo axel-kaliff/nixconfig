@@ -9,7 +9,9 @@
 	nhoriz = "nvim -o"; # split with horizontal divider
 	nvert  = "nvim -O"; # split with vertical divider
 
-	# lsd
+	garbage-collect = "nix-collect-garbage --delete-older-than 2d";
+
+	# eza
 	l = "eza";
 	la = "eza -A";
 	ll = "eza -Al";

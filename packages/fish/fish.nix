@@ -9,10 +9,6 @@
 	];
 
   plugins = [
-      # Enable a plugin (here grc for colorized command output) from nixpkgs
-      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
-
-
       { name = "bobthefish"; src = pkgs.fishPlugins.bobthefish.src; }
       # Manually packaging and enable a plugin
       {
