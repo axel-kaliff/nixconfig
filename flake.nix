@@ -38,7 +38,7 @@
             trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
           };
         }
-        ./cosmic-configuration.nix
+        ./configurations/cosmic-configuration.nix
         ./packages/xremap.nix
       ];
     };
@@ -54,7 +54,7 @@
             trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
           };
         }
-        ./gnome-configuration.nix
+        ./configurations/gnome-configuration.nix
         ./packages/xremap.nix
       ];
     };

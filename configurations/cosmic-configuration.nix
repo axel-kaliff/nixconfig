@@ -10,7 +10,7 @@
     ./../modules/users.nix
     ./../modules/system.nix
     ./../modules/audio.nix
-    ./../packages.zsh.nix
+    #./../packages.zsh.nix
     inputs.home-manager.nixosModules.default
     inputs.nixos-cosmic.nixosModules.default
   ];
