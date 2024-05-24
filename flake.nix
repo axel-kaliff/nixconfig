@@ -39,7 +39,7 @@
           };
         }
         ./cosmic-configuration.nix
-        ./xremap.nix
+        ./packages/xremap.nix
       ];
     };
 
@@ -55,7 +55,7 @@
           };
         }
         ./gnome-configuration.nix
-        ./xremap.nix
+        ./packages/xremap.nix
       ];
     };
   };

@@ -27,7 +27,7 @@ in
   imports = [
 
     inputs.nixvim.homeManagerModules.nixvim
-    ./neovim.nix
+    ./packages/neovim.nix
 
   ];
 
@@ -131,6 +131,6 @@ in
   # Let Home Manager install and manage itself.
   programs = {
     home-manager.enable = true;
-    fish = import ./fish/fish.nix { inherit lib; inherit pkgs; };
+    fish = import ./packages/fish/fish.nix { inherit lib; inherit pkgs; };
     };
   }
