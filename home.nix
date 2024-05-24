@@ -41,16 +41,13 @@ in
 	##### engineering
   fish
 	lazygit
-	#neovim 
 	wget
 	vscode
-	# mujoco
 	alacritty
 	zsh
 	python3
 	z-lua
 	rustup
-	#oh-my-zsh
 	tmux
 	eza
 	git
@@ -59,8 +56,6 @@ in
 	broot
   du-dust
 
-  #ion
-  #nushell
 
 	##### apps
   freetube
@@ -132,5 +127,6 @@ in
   programs = {
     home-manager.enable = true;
     fish = import ./packages/fish/fish.nix { inherit lib; inherit pkgs; };
+    zsh = import ./packages/zsh.nix { inherit pkgs; };
     };
   }
