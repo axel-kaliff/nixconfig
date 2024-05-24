@@ -27,7 +27,8 @@
   };
 
   outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+
+nixosConfigurations.cosmic = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
 
       modules = [
@@ -38,12 +39,32 @@
             trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
           };
         }
-        nixos-cosmic.nixosModules.default
-        ./configuration.nix
+        ./cosmic-configuration.nix
         inputs.home-manager.nixosModules.default
         ./xremap.nix
       ];
     };
+
+    nixosConfigurations.gnome = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+
+      modules = [
+        inputs.xremap-flake.nixosModules.default
+        {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          };
+        }
+        ./gnome-configuration.nix
+        inputs.home-manager.nixosModules.default
+        ./xremap.nix
+      ];
+    };
+
+
+
+
   };
 }
 

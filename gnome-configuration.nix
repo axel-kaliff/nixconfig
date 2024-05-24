@@ -5,7 +5,7 @@
 
   imports = [
     ./clients/thinkpad/hardware.nix
-    ./modules/desktop.nix
+    ./modules/gnome-desktop.nix
     ./modules/networking.nix
     ./modules/users.nix
     ./modules/system.nix
