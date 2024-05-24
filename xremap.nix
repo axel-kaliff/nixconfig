@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, pkgs, ...}:
 {
   services.xremap.config.modmap = [
     {

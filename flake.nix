@@ -10,10 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
@@ -28,27 +26,24 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, nixvim, disko, home-manager, nixos-cosmic, xremap-flake, ... }: 
-    let
-      system = "x86_64-linux";
-    in {
-      nixosConfigurations = {
-        default = nixpkgs.lib.nixosSystem {
-          system = system;
-          modules = [
-            xremap-flake.nixosModules.default
-            #./xremap.nix
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-              };
-            }
-            ./configuration.nix
-            home-manager.nixosModules.default
-          ];
-        };
-      };
+  outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
+    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+
+      modules = [
+        inputs.xremap-flake.nixosModules.default
+        {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          };
+        }
+        nixos-cosmic.nixosModules.default
+        ./configuration.nix
+        inputs.home-manager.nixosModules.default
+        ./xremap.nix
+      ];
     };
+  };
 }
 
