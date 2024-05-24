@@ -5,12 +5,15 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
-    
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
@@ -18,18 +21,23 @@
     };
 
     xremap-flake.url = "github:xremap/nix-flake";
-     # Neovim
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs"; 
+    
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-
-    modules = [
-            inputs.xremap-flake.nixosModules.default
-            ./xremap.nix
+  outputs = { self, nixpkgs, nixos-hardware, nixvim, disko, home-manager, nixos-cosmic, xremap-flake, ... }: 
+    let
+      system = "x86_64-linux";
+    in {
+      nixosConfigurations = {
+        default = nixpkgs.lib.nixosSystem {
+          system = system;
+          modules = [
+            xremap-flake.nixosModules.default
+            #./xremap.nix
             {
               nix.settings = {
                 substituters = [ "https://cosmic.cachix.org/" ];
@@ -37,24 +45,10 @@
               };
             }
             ./configuration.nix
-            inputs.home-manager.nixosModules.default
-            # inputs.nixvim.nixosModules.nixvim
-            # ./nixvim/nixvim.nix
+            home-manager.nixosModules.default
           ];
-            }
-            nixos-cosmic.nixosModules.default
-            ./configuration.nix
-            inputs.home-manager.nixosModules.default
-    
-            #inputs.nixvim.nixosModules.nixvim
-            #./nixvim/nixvim.nix
-    
-        ];
         };
-
-
-
-
-
-  };
+      };
+    };
 }
+
