@@ -1,6 +1,11 @@
 { config, pkgs, ...}:
 {
-  services.xremap.config.modmap = [
+  services.xremap.enable = true;
+ 
+
+ services.xremap.config.modmap = [
+
+
     {
       name = "Global";
       remap = {
@@ -9,9 +14,13 @@
         "CapsLock" = "LeftCtrl";
       };
     }
+
+
   ];
 
-  services.xremap.config.keymap = [
+services.xremap.config.keymap = [
+
+
     {
       name = "navigation";
       remap = {
@@ -19,6 +28,13 @@
         "C-j" = "PAGEDOWN";
       };
     }
-  ];
+
+
+
+    ];
+
+
+
+
 }
 

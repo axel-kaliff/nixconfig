@@ -73,6 +73,8 @@ in
   thunderbird
   libsForQt5.okular
 
+  #xremap
+  xkb-switch
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -119,6 +121,8 @@ in
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    XKB_DEFAULT_LAYOUT = "us,se";
+    XKB_DEFAULT_OPTIONS = "grp:win_space_toggle";
   };
 
   

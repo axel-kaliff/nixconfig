@@ -5,7 +5,7 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-    options = "grp:alt_bksp_toggle";
+    options = "grp:win_space_toggle";
   };
 
   fonts.packages = with pkgs; [
