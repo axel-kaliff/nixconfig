@@ -20,6 +20,12 @@
     gnomeExtensions.tray-icons-reloaded
     gnome.nautilus
     whatsapp-for-linux
+    power-profiles-daemon
+
+    # add system76 scheduler? how would I benchmark?
+    #linuxKernel.packages.linux_zen.system76-power
+    # linuxKernel.packages.linux_zen.system76-scheduler
+
   ];
 }
 

@@ -36,9 +36,10 @@ in
   home.packages = with pkgs; [
 	vlc
 	gnome.file-roller
-	loupe
-
-	##### engineering
+  loupe
+  pick-colour-picker
+  ##### engineering
+  ripgrep
   fish
 	lazygit
 	wget
