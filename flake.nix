@@ -27,6 +27,23 @@
   };
 
   outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
+
+    nixosConfigurations.x260gnome = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+
+      modules = [
+        inputs.xremap-flake.nixosModules.default
+        {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+          };
+        }
+        ./configurations/x260gnome.nix
+        ./packages/xremap.nix
+      ];
+    };
+
     nixosConfigurations.cosmic = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
 

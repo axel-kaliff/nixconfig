@@ -4,7 +4,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   imports = [
-    ./../clients/thinkpad/hardware.nix
+    ./../clients/t490/hardware.nix
     ./../modules/gnome-desktop.nix
     ./../modules/networking.nix
     ./../modules/users.nix
