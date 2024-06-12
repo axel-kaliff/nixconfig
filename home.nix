@@ -74,6 +74,7 @@ in
   thunderbird
   libsForQt5.okular
   solaar
+  bitwarden-desktop
 
   #xremap
   xkb-switch
