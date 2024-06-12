@@ -12,6 +12,8 @@
     (nerdfonts.override { fonts = ["FiraCode" "DroidSansMono" "Hack" "SourceCodePro"]; })
   ];
 
+  hardware.logitech.wireless.enable = true;
+
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
     wofi

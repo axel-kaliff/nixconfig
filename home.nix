@@ -73,6 +73,7 @@ in
   firefox
   thunderbird
   libsForQt5.okular
+  solaar
 
   #xremap
   xkb-switch
