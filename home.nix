@@ -34,6 +34,8 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+  mullvad-browser
+  brave
 	vlc
 	gnome.file-roller
   loupe
