@@ -15,12 +15,12 @@
   hardware.logitech.wireless.enable = true;
 
   environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
+    gnome-tweaks
     wofi
     gnomeExtensions.pop-shell
     gnomeExtensions.caffeine
     gnomeExtensions.tray-icons-reloaded
-    gnome.nautilus
+    nautilus
     whatsapp-for-linux
     power-profiles-daemon
 

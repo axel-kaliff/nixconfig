@@ -37,7 +37,7 @@ in
   mullvad-browser
   brave
 	vlc
-	gnome.file-roller
+	file-roller
   loupe
   pick-colour-picker
   ##### engineering
