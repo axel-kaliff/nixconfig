@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   services.xserver.enable = true;
@@ -20,9 +20,12 @@
     gnomeExtensions.pop-shell
     gnomeExtensions.caffeine
     gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.blur-my-shell
     nautilus
     whatsapp-for-linux
     power-profiles-daemon
+    gnomeExtensions.gnome-40-ui-improvements
+
 
     # add system76 scheduler? how would I benchmark?
     #linuxKernel.packages.linux_zen.system76-power
