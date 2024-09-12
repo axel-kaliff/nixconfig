@@ -1,12 +1,4 @@
-{ self,lib, inputs, config, pkgs, ... }:
-
-let
-  nixvim = import (builtins.fetchGit {
-    url = "https://github.com/nix-community/nixvim";
-    # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-    # ref = "nixos-23.05";
-  });
-in
+{ lib, inputs, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -59,6 +51,8 @@ in
 	broot
   du-dust
   atuin
+  starship
+  
 
 
 	##### apps
