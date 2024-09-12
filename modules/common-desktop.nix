@@ -3,7 +3,7 @@
 {
   services.xserver.enable = true;
   services.xserver.xkb = {
-    layout = "us";
+    layout = "us,se";
     variant = "";
     options = "grp:win_space_toggle";
   };
@@ -23,7 +23,7 @@
     gnomeExtensions.blur-my-shell
     nautilus
     whatsapp-for-linux
-    power-profiles-daemon
+    #power-profiles-daemon
     gnomeExtensions.gnome-40-ui-improvements
 
 
