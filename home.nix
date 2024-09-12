@@ -124,8 +124,14 @@
     XKB_DEFAULT_LAYOUT = "us,se";
     XKB_DEFAULT_OPTIONS = "grp:win_space_toggle";
   };
-
   
+  home.pointerCursor = {
+      gtk.enable = true;
+      # x11.enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 12;
+    };
 
   # Let Home Manager install and manage itself.
   programs = {
