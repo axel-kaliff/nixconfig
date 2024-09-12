@@ -1,9 +1,9 @@
-# programs.fish =
 { lib, pkgs, ...}: {
 
 	enable = true;
 	shellAliases = import ./fish-aliases.nix;
-	shellInit = lib.strings.concatMapStringsSep "\n" builtins.readFile [
+  shellInit = lib.strings.concatMapStringsSep "\n" builtins.readFile [
+    ./config.fish
 		./fish-extra-shell-init.fish
 		./fish-extra-shell-init-nixos.fish
 	];
