@@ -58,6 +58,7 @@ in
 	bat
 	broot
   du-dust
+  atuin
 
 
 	##### apps
