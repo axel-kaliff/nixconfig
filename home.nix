@@ -35,18 +35,15 @@
   ##### engineering
   kitty
   ripgrep
-  fish
 	lazygit
 	wget
 	vscode
 	alacritty
-	zsh
 	python3
 	z-lua
 	rustup
 	tmux
 	eza
-  #git
 	sublime-merge
 	bat
 	broot
