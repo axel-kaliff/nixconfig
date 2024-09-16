@@ -1,4 +1,4 @@
-{pkgs,...}:
+{...}:
 {
   enable = true;
   #autosuggestions.enable = true;
