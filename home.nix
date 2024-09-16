@@ -33,6 +33,7 @@
   loupe
   pick-colour-picker
   ##### engineering
+  kitty
   ripgrep
   fish
 	lazygit
@@ -45,7 +46,7 @@
 	rustup
 	tmux
 	eza
-	git
+  #git
 	sublime-merge
 	bat
 	broot
@@ -72,6 +73,8 @@
   libsForQt5.okular
   solaar
   bitwarden-desktop
+  fastfetch
+  kitty
 
   #xremap
   xkb-switch
@@ -138,5 +141,6 @@
     home-manager.enable = true;
     fish = import ./packages/fish/fish.nix { inherit lib; inherit pkgs; };
     zsh = import ./packages/zsh.nix { inherit pkgs; };
+    git = import ./packages/git.nix { inherit pkgs; };
     };
   }
