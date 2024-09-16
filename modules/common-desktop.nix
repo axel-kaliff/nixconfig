@@ -13,6 +13,7 @@
   ];
 
   hardware.logitech.wireless.enable = true;
+  services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
     gnome-tweaks
@@ -25,6 +26,7 @@
     whatsapp-for-linux
     #power-profiles-daemon
     gnomeExtensions.gnome-40-ui-improvements
+    flatpak-builder
 
 
     # add system76 scheduler? how would I benchmark?
