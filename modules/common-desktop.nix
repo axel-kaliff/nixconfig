@@ -9,7 +9,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode" "DroidSansMono" "Hack" "SourceCodePro"]; })
+    (nerdfonts.override { fonts = ["SourceCodePro" "FiraCode" "DroidSansMono" "Hack"]; })
   ];
 
   hardware.logitech.wireless.enable = true;
@@ -23,7 +23,6 @@
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.blur-my-shell
     nautilus
-    whatsapp-for-linux
     #power-profiles-daemon
     gnomeExtensions.gnome-40-ui-improvements
     flatpak-builder
