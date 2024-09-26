@@ -5,12 +5,16 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     disko.url = "github:nix-community/disko";
+
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-cosmic = {
@@ -24,6 +28,7 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
