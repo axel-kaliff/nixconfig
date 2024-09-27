@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+
+  imports = [
+    ./cosmic-desktop.nix
+    ./gnome-desktop.nix
+  ];
+
   services.xserver.enable = true;
   services.xserver.xkb = {
     layout = "us,se";
@@ -16,8 +22,8 @@
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
-    wofi
 
+    wofi
     nautilus
     flatpak-builder
 

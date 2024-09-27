@@ -5,7 +5,7 @@
 
   imports = [
     ./../clients/t490/hardware.nix
-    ./../modules/cosmic-desktop.nix
+    ./../modules/common-desktop.nix
     ./../modules/networking.nix
     ./../modules/users.nix
     ./../modules/system.nix

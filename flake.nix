@@ -49,7 +49,7 @@
       ];
     };
 
-    nixosConfigurations.cosmic = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.t490 = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
 
       modules = [
@@ -60,26 +60,12 @@
             trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
           };
         }
-        ./configurations/cosmic-configuration.nix
+        ./configurations/t490-configuration.nix
         ./packages/xremap.nix
       ];
     };
 
-    nixosConfigurations.gnome = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-
-      modules = [
-        inputs.xremap-flake.nixosModules.default
-        {
-          nix.settings = {
-            substituters = [ "https://cosmic.cachix.org/" ];
-            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-          };
-        }
-        ./configurations/gnome-configuration.nix
-        ./packages/xremap.nix
-      ];
-    };
+    
   };
 }
 
