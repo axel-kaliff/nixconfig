@@ -1,6 +1,5 @@
 -- TODO:
 -- - Fix suggestions and completion
--- - Add harpoon
 
 -- Explore Neovim and Lua through the following guides:
 -- - https://learnxinyminutes.com/docs/lua/
@@ -125,6 +124,32 @@ require('lazy').setup({
     },
   },
 
+  ------ Emoji
+  {
+    "allaman/emoji.nvim",
+    version = "1.0.0", -- optionally pin to a tag
+    ft = "markdown", -- adjust to your needs
+    dependencies = {
+      -- optional for nvim-cmp integration
+      "hrsh7th/nvim-cmp",
+      -- optional for telescope integration
+      "nvim-telescope/telescope.nvim",
+    },
+    opts = {
+      -- default is false
+      enable_cmp_integration = true,
+      -- optional if your plugin installation directory
+      -- is not vim.fn.stdpath("data") .. "/lazy/
+      plugin_path = vim.fn.expand("$HOME/plugins/"),
+    },
+    config = function(_, opts)
+      require("emoji").setup(opts)
+      -- optional for telescope integration
+      local ts = require('telescope').load_extension 'emoji'
+      vim.keymap.set('n', '<leader>se', ts.emoji, { desc = '[S]earch [E]moji' })
+    end,
+  },
+
   -- dashboard
   {
     'nvimdev/dashboard-nvim',
@@ -135,34 +160,40 @@ require('lazy').setup({
     config = function()
       require('dashboard').setup {
         theme = 'hyper',
-    config = {
-      week_header = {
-       enable = true,
-      },
-      shortcut = {
-        { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
-        {
-          icon = ' ',
-          icon_hl = '@variable',
-          desc = 'Files',
-          group = 'Label',
-          action = 'Telescope find_files',
-          key = 'f',
+        config = {
+          week_header = {
+            enable = true,
+          },
+          shortcut = {
+            { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+            {
+              icon = ' ',
+              icon_hl = '@variable',
+              desc = 'Files',
+              group = 'Label',
+              action = 'Telescope find_files',
+              key = 'f',
+            },
+            {
+              desc = ' Tree',
+              group = 'Neotree',
+              action = 'Neotree',
+              key = 't',
+            },
+            {
+              desc = '󰩈 Exit',
+              group = 'ErrorMsg',
+              action = 'q',
+              key = 'q',
+            },
+            -- {
+            --   desc = ' dotfiles',
+            --   group = 'Number',
+            --   action = 'Telescope dotfiles',
+            --   key = 'd',
+            -- },
+          },
         },
-        {
-          desc = ' Tree',
-          group = 'Neotree',
-          action = 'Neotree',
-          key = 't',
-        },
-        -- {
-        --   desc = ' dotfiles',
-        --   group = 'Number',
-        --   action = 'Telescope dotfiles',
-        --   key = 'd',
-        -- },
-      },
-    },
 
       }
     end,
@@ -235,7 +266,7 @@ require('lazy').setup({
 
 -- Key bindings
 vim.keymap.set('n', '<leader>gl', '<cmd>FloatermNew lazygit<cr>', { desc = '[G]it [L]azy' })
-vim.keymap.set('n', '<leader>ft', '<cmd>Neotree toggle<cr>', { desc = '[F]ile tree [T]oggle' })
+vim.keymap.set('n', '<leader>t', '<cmd>Neotree toggle<cr>', { desc = '[F]ile tree [T]oggle' })
 
 -- Basic options
 vim.o.hlsearch = true
