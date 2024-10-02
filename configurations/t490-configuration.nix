@@ -1,7 +1,9 @@
-{ inputs, ... }:
+{ inputs, pkgs,... }:
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   imports = [
     ./../clients/t490/hardware.nix
