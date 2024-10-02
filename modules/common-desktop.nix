@@ -18,10 +18,6 @@
     (nerdfonts.override { fonts = ["SourceCodePro" "FiraCode" "DroidSansMono" "Hack"]; })
   ];
 
-  # environment.systemPackages = with pkgs; [ 
-  #   auto-cpufreq
-  # ];
-
   hardware.logitech.wireless.enable = true;
   services.flatpak.enable = true;
 
@@ -32,6 +28,7 @@
     wofi
     nautilus
     flatpak-builder
+    wl-clipboard
 
   ];
 }
