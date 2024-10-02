@@ -18,7 +18,6 @@
 
   imports = [
 
-    inputs.nixvim.homeManagerModules.nixvim
     ./packages/neovim.nix
 
   ];

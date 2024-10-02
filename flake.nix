@@ -24,14 +24,14 @@
 
     xremap-flake.url = "github:xremap/nix-flake";
     
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    auto-cpufreq = {
+            url = "github:AdnanHodzic/auto-cpufreq";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-cosmic, auto-cpufreq, ... }@inputs: {
 
     nixosConfigurations.x260gnome = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
@@ -62,6 +62,7 @@
         }
         ./configurations/t490-configuration.nix
         ./packages/xremap.nix
+        auto-cpufreq.nixosModules.default
       ];
     };
 

@@ -18,9 +18,14 @@
     (nerdfonts.override { fonts = ["SourceCodePro" "FiraCode" "DroidSansMono" "Hack"]; })
   ];
 
+  # environment.systemPackages = with pkgs; [ 
+  #   auto-cpufreq
+  # ];
+
   hardware.logitech.wireless.enable = true;
   services.flatpak.enable = true;
-  services.power-profiles-daemon.enable = true;
+
+  programs.auto-cpufreq.enable = true;
 
   environment.systemPackages = with pkgs; [
 
