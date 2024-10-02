@@ -20,16 +20,13 @@
 
   hardware.logitech.wireless.enable = true;
   services.flatpak.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   environment.systemPackages = with pkgs; [
 
     wofi
     nautilus
     flatpak-builder
-
-    # add system76 scheduler? how would I benchmark?
-    # linuxKernel.packages.linux_zen.system76-power
-    # linuxKernel.packages.linux_zen.system76-scheduler
 
   ];
 }
