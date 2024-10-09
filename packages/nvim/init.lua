@@ -26,10 +26,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Configure plugins
 require('lazy').setup({
   -- Plugins that don't require configuration
-  { 'echasnovski/mini.nvim', version = false },
+  { 'echasnovski/mini.nvim',   version = false },
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
+
+  { 'akinsho/bufferline.nvim', version = "*",  dependencies = 'nvim-tree/nvim-web-devicons' },
 
   -- LSP Configuration & Plugins
   {
@@ -128,7 +130,7 @@ require('lazy').setup({
   {
     "allaman/emoji.nvim",
     version = "1.0.0", -- optionally pin to a tag
-    ft = "markdown", -- adjust to your needs
+    ft = "markdown",   -- adjust to your needs
     dependencies = {
       -- optional for nvim-cmp integration
       "hrsh7th/nvim-cmp",
@@ -291,6 +293,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+
+-- bufferline
+vim.opt.termguicolors = true
+require("bufferline").setup {}
+
+vim.keymap.set('n', '<Leader>l', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next Tab' })
+vim.keymap.set('n', '<Leader>h', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Next Tab' })
+
 -- Configure Telescope
 require('telescope').setup {
   defaults = {
@@ -302,6 +312,80 @@ require('telescope').setup {
     },
   },
 }
+
+
+-- Configure Neotree
+require("neo-tree").setup({
+  close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+  popup_border_style = "rounded",
+  enable_git_status = true,
+  enable_diagnostics = true,
+  window = {
+    mappings = {
+      ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+      ["l"] = "focus_preview",
+      ["<C-b>"] = { "scroll_preview", config = { direction = 10 } },
+      ["<C-f>"] = { "scroll_preview", config = { direction = -10 } },
+      ["S"] = "open_split",
+      ["s"] = "open_vsplit",
+      -- ["S"] = "split_with_window_picker",
+      -- ["s"] = "vsplit_with_window_picker",
+      ["t"] = "open_tabnew",
+      -- ["<cr>"] = "open_drop",
+      -- ["t"] = "open_tab_drop",
+      ["w"] = "open_with_window_picker",
+    }
+  },
+  default_component_configs = {
+    indent = {
+      with_expanders = true,
+      expander_collapsed = "",
+      expander_expanded = "",
+      expander_highlight = "NeoTreeExpander",
+    },
+    name = {
+      trailing_slash = false,
+      use_git_status_colors = true,
+      highlight = "NeoTreeFileName",
+    },
+  },
+  filesystem = {
+    filtered_items = {
+      visible = false,       -- when true, they will just be displayed differently than normal items
+      hide_dotfiles = false,
+      hide_gitignored = true,
+      hide_by_name = {
+        --"node_modules"
+      },
+      hide_by_pattern = {       -- uses glob style patterns
+        --"*.meta",
+        --"*/src/*/tsconfig.json",
+      },
+      always_show = {       -- remains visible even if other settings would normally hide it
+        --".gitignored",
+      },
+      always_show_by_pattern = {       -- uses glob style patterns
+        --".env*",
+      },
+      never_show = {       -- remains hidden even if visible is toggled to true, this overrides always_show
+        --".DS_Store",
+        --"thumbs.db"
+      },
+      never_show_by_pattern = {       -- uses glob style patterns
+        --".null-ls_*",
+      },
+    },
+    follow_current_file = {
+      enabled = true,                -- This will find and focus the file in the active buffer every time
+      --               -- the current file is changed while the tree is open.
+      leave_dirs_open = false,       -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+    }
+  },
+
+
+})
+
+
 pcall(require('telescope').load_extension, 'fzf')
 
 local function find_git_root()
