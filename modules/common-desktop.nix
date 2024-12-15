@@ -15,7 +15,10 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["SourceCodePro" "Meslo" "FiraCode" "DroidSansMono" "Hack"]; })
+    nerd-fonts.sauce-code-pro
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.hack
   ];
 
   hardware.logitech.wireless.enable = true;
